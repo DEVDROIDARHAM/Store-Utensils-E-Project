@@ -1,0 +1,472 @@
+Complete JavaScript Explanation — Everything in Detail
+
+WHAT IS A VARIABLE?
+A variable is a box that stores information. You give the box a name, put something inside it, and use that name later.
+jsvar name = 'Ahmed';
+var price = 2500;
+var count = 0;
+Before: Nothing stored anywhere
+After: Now name holds 'Ahmed', price holds 2500
+Why we use it: So we can reuse the same value without writing it again and again
+
+WHAT IS A FUNCTION?
+A function is a set of instructions with a name. You write the instructions once, then call the name whenever you want those instructions to run.
+jsfunction filterByCategory(category, clickedBtn) {
+    // instructions here
+}
+Before calling: Nothing happens, function just sits there waiting
+After calling: All instructions inside run one by one
+Why we use it: So we don't repeat the same code. Write once, use many times.
+The words inside the brackets (category, clickedBtn) are called parameters — they are information the function receives when called. Like telling the function "hey, filter for THIS category"
+
+WHAT IS window?
+window is the entire browser tab itself. Everything on the page lives inside window. It is automatically available — you never have to create it.
+jswindow.scrollY        // how many pixels user has scrolled down
+window.innerHeight    // how tall the browser screen is in pixels
+window.addEventListener  // listen for something happening in the browser
+window.onload         // run something when page finishes loading
+Example we used:
+jsif (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+}
+Before scrolling: window.scrollY is 0
+After scrolling down: window.scrollY becomes 200, 300, 400 etc
+Why: We check this number to know when to change the navbar color
+
+WHAT IS addEventListener?
+It means "keep watching for something to happen, and when it does, run this function"
+jswindow.addEventListener('scroll', function() {
+    // this runs every time user scrolls
+});
+
+window.addEventListener('load', checkAnimations);
+// this runs once when page fully loads
+'scroll' — watch for scrolling
+'load' — watch for page finishing loading
+'click' — watch for clicking
+Before: Browser is just watching, waiting
+When scroll happens: The function inside runs immediately
+Why: So our code reacts to what the user does
+
+WHAT IS classList?
+Every HTML element has CSS classes on it. classList is the list of those classes. JavaScript can add, remove or check classes using classList.
+js// our HTML
+<header class="navbar">
+
+// after user scrolls
+header.classList.add('scrolled');
+// now HTML becomes: <header class="navbar scrolled">
+
+// when user scrolls back to top
+header.classList.remove('scrolled');
+// now HTML becomes: <header class="navbar">
+Three things classList can do:
+jselement.classList.add('scrolled')      // adds a class
+element.classList.remove('active')     // removes a class
+element.classList.contains('visible')  // checks if class exists — true or false
+Why: Because CSS classes control how things look. By adding/removing classes with JavaScript, we change the appearance without touching the CSS file directly.
+
+WHAT IS document.querySelector?
+document is the entire HTML page. querySelector means "go find me one element in the HTML that matches this"
+jsvar navbar = document.querySelector('header');
+// finds the <header> element
+
+var card = document.querySelector('.product-card');
+// finds first element with class product-card
+Before: navbar variable is empty
+After: navbar now holds the actual header element from the HTML
+Why: So JavaScript can read or change that element
+
+WHAT IS document.querySelectorAll?
+Same as querySelector but finds ALL matching elements, not just the first one. Returns a list.
+jsvar allButtons = document.querySelectorAll('.btn-filter');
+// finds ALL elements with class btn-filter — all 6 filter buttons
+
+var allCards = document.querySelectorAll('[data-category]');
+// finds ALL elements that have a data-category attribute — all 54 cards
+The square brackets [data-category] mean "any element that has this attribute"
+Before: allButtons is empty
+After: allButtons is a list of 6 button elements
+Why: So we can loop through all of them and do something to each one
+
+WHAT IS a FOR LOOP?
+A for loop repeats instructions a certain number of times. Used when you want to do the same thing to many items.
+jsfor (var i = 0; i < allButtons.length; i++) {
+    allButtons[i].classList.remove('active');
+}
+Breaking it down piece by piece:
+
+var i = 0 — start counting from 0
+i < allButtons.length — keep going as long as i is less than total number of buttons
+i++ — after each round, add 1 to i
+allButtons[i] — this means "the button at position i" — first time i=0 so first button, second time i=1 so second button, and so on
+
+Before loop: All 6 buttons might have active class
+During loop: Goes through button 0, button 1, button 2... removes active from each
+After loop: All 6 buttons have no active class
+Why: We need to remove highlight from ALL buttons before highlighting just the clicked one
+
+WHAT IS .length?
+.length gives you how many items are in a list. Or how many characters are in a text.
+jsvar allButtons = document.querySelectorAll('.btn-filter');
+allButtons.length   // gives 6 — because there are 6 filter buttons
+
+var feedback = 'Hello';
+feedback.length     // gives 5 — because Hello has 5 characters
+
+if (feedback.length < 20) {
+    showError('Too short!');
+}
+Why: In the for loop we use .length to know when to stop. In the feedback form we use it to check if enough characters were typed.
+
+WHAT IS checkAnimations()?
+This function checks — "has this element appeared on the screen yet? If yes, animate it"
+jsfunction checkAnimations() {
+
+    var animatedItems = document.querySelectorAll('.slide-left, .slide-right');
+    var screenBottom  = window.innerHeight - 80;
+
+    for (var i = 0; i < animatedItems.length; i++) {
+
+        var itemTop = animatedItems[i].getBoundingClientRect().top;
+
+        if (itemTop < screenBottom) {
+            animatedItems[i].classList.add('visible');
+        }
+    }
+}
+Before scroll: Elements have slide-left class — they are invisible and shifted to the side
+When element enters screen: visible class gets added
+After visible added: CSS transition kicks in — element fades in and slides to normal position
+Why: So animations only happen when the user actually scrolls to that section — not all at once when page loads
+
+WHAT IS getBoundingClientRect().top?
+This measures where an element is on the visible screen right now.
+jsvar itemTop = animatedItems[i].getBoundingClientRect().top;
+getBoundingClientRect() — measures the element's position and size on screen right now. Returns an object with top, bottom, left, right values.
+.top — we only need the top value. It tells us how many pixels from the top of the visible screen this element starts.
+Example:
+
+If itemTop is 900 — element is 900px below the top of screen, probably not visible yet
+If itemTop is 400 — element is 400px from top, probably visible
+If itemTop is -50 — element is above the screen, user has scrolled past it
+
+Why: We compare itemTop to screenBottom to decide if the element is visible enough to animate
+
+WHAT IS itemTop and screenBottom?
+Just variable names we invented to store numbers cleanly.
+jsvar screenBottom = window.innerHeight - 80;
+// if screen is 768px tall, screenBottom = 688
+// we subtract 80 so animation triggers a bit BEFORE element fully appears
+
+var itemTop = animatedItems[i].getBoundingClientRect().top;
+// distance from top of screen to this element
+
+if (itemTop < screenBottom) {
+    // element is visible enough — animate it!
+}
+Why subtract 80? So the animation starts slightly before the element fully enters the screen. Looks smoother and more natural.
+
+WHAT IS data-category?
+A custom label we put on every product card column in the HTML. We invented it ourselves using HTML5 data attributes.
+html<div class="col-sm-6 col-lg-4" data-category="Cookware" data-search="pressure cooker 5l">
+Any attribute starting with data- is custom. The browser stores it but does nothing with it — only our JavaScript uses it.
+Reading it in JavaScript:
+jsvar cardCategory = allCards[i].getAttribute('data-category');
+// getAttribute reads the value — gives us 'Cookware'
+Before filtering: All 54 cards are visible
+After filtering for Cookware: Only cards where data-category equals 'Cookware' are visible
+Why: It gives each card a label so JavaScript knows what category it belongs to
+
+WHAT IS filterByCategory() — THE WHOLE FUNCTION?
+jsfunction filterByCategory(category, clickedBtn) {
+
+    // STEP 1 — remove highlight from all buttons
+    var allButtons = document.querySelectorAll('.btn-filter');
+    for (var i = 0; i < allButtons.length; i++) {
+        allButtons[i].classList.remove('active');
+    }
+
+    // STEP 2 — highlight only the clicked button
+    clickedBtn.classList.add('active');
+
+    // STEP 3 — show or hide each card
+    var allCards = document.querySelectorAll('[data-category]');
+    var count    = 0;
+
+    for (var i = 0; i < allCards.length; i++) {
+
+        var cardCategory = allCards[i].getAttribute('data-category');
+
+        if (category == 'all' || cardCategory == category) {
+            allCards[i].style.display = 'block';
+            count++;
+        } else {
+            allCards[i].style.display = 'none';
+        }
+    }
+
+    // STEP 4 — update count text
+    document.getElementById('productCount').textContent = 'Showing ' + count + ' products';
+}
+How it is called in HTML:
+html<button onclick="filterByCategory('Cookware', this)" class="btn-filter">Cookware</button>
+this means "the button that was just clicked" — JavaScript passes the actual button element
+Step by step what happens:
+
+User clicks Cookware button
+category receives 'Cookware', clickedBtn receives the button element
+Loop removes active from all 6 buttons — none highlighted
+Add active to clicked button — Cookware button now highlighted blue
+Loop through all 54 cards — check each card's data-category
+If data-category equals 'Cookware' → style.display = 'block' → card appears
+If different → style.display = 'none' → card disappears completely
+count increases for every visible card
+Product count text updates
+
+
+WHAT IS style.display?
+Controls whether an element is visible or completely gone from the layout.
+jsallCards[i].style.display = 'block';   // show the card — takes up space
+allCards[i].style.display = 'none';    // hide completely — takes NO space
+Before: Card is on the page
+After display none: Card is invisible AND the space it occupied is gone — other cards move to fill the gap
+Why: Cleanest way to show/hide elements
+
+WHAT IS filterProducts() — THE WHOLE FUNCTION?
+jsfunction filterProducts() {
+
+    var searchText = document.getElementById('searchInput').value.toLowerCase();
+    var allCards   = document.querySelectorAll('[data-search]');
+    var count      = 0;
+
+    for (var i = 0; i < allCards.length; i++) {
+
+        var cardKeywords = allCards[i].getAttribute('data-search');
+
+        if (cardKeywords.includes(searchText)) {
+            allCards[i].style.display = 'block';
+            count++;
+        } else {
+            allCards[i].style.display = 'none';
+        }
+    }
+
+    document.getElementById('productCount').textContent = 'Showing ' + count + ' products';
+}
+Called in HTML:
+html<input id="searchInput" onkeyup="filterProducts()">
+onkeyup means — every time user releases a key while typing, run this function. So it filters live with every character.
+Step by step:
+
+User types 'knife' in search box
+.value reads what is typed — 'knife'
+.toLowerCase() converts to lowercase — 'knife'
+Loop through all 54 cards
+Read each card's data-search value — example: 'chef knife 8 inch'
+.includes('knife') — does this contain 'knife'? YES → show card
+Another card's data-search: 'pressure cooker 5l' — includes 'knife'? NO → hide
+Count visible cards, update text
+
+
+WHAT IS .includes()?
+Checks if one piece of text exists inside another piece of text. Returns true or false.
+js'chef knife 8 inch'.includes('knife')    // true
+'pressure cooker 5l'.includes('knife')   // false
+'stainless steel wok'.includes('steel')  // true
+Before: Don't know if search text matches
+After: We have true or false answer
+Why: Perfect for search — we want to show a card if the search word appears ANYWHERE in its keywords
+
+WHAT IS .toLowerCase()?
+Converts all letters to small/lowercase.
+js'KNIFE'.toLowerCase()    // gives 'knife'
+'Knife'.toLowerCase()    // gives 'knife'
+'knife'.toLowerCase()    // gives 'knife'
+In our code:
+jsvar searchText = document.getElementById('searchInput').value.toLowerCase();
+Why: If user types KNIFE and data-search has 'knife', they would NOT match without toLowerCase because capital and small letters are different in JavaScript. By converting to lowercase we make search work no matter how user types.
+
+WHAT IS openModal() — THE WHOLE FUNCTION?
+jsfunction openModal(productId) {
+
+    // STEP 1 — find the product
+    var selectedProduct = null;
+
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].id == productId) {
+            selectedProduct = products[i];
+            break;
+        }
+    }
+
+    // STEP 2 — if not found, stop
+    if (selectedProduct == null) return;
+
+    // STEP 3 — fill modal with product info
+    document.getElementById('modalName').textContent = selectedProduct.name;
+    document.getElementById('modalImage').src        = selectedProduct.image;
+    document.getElementById('modalPrice').textContent = 'PKR ' + selectedProduct.price;
+    // ... and so on for all fields
+
+    // STEP 4 — set badge color
+    var badge = document.getElementById('modalBadge');
+    badge.textContent = selectedProduct.quality;
+
+    if (selectedProduct.quality == 'Premium') {
+        badge.className = 'badge-premium';
+    } else {
+        badge.className = 'badge-standard';
+    }
+
+    // STEP 5 — show the modal
+    var modal = new bootstrap.Modal(document.getElementById('productModal'));
+    modal.show();
+}
+Called in HTML:
+html<div class="product-card" onclick="openModal(3)">
+Each card has a different number hardcoded.
+Step by step:
+
+User clicks product card number 3
+productId receives 3
+Loop starts — checks products[0].id, products[1].id, products[2].id
+products[2].id is 3 — match found!
+selectedProduct now holds that product's full object
+break stops the loop immediately
+All modal elements get filled with selectedProduct's data
+Badge gets correct color class
+Bootstrap shows the modal popup
+
+
+WHAT IS null?
+null means nothing, empty, does not exist.
+jsvar selectedProduct = null;
+// we set it to null at the start — meaning "not found yet"
+
+// after the loop finds it:
+selectedProduct = products[i];
+// now it has a real value
+
+// if loop finishes and nothing was found:
+selectedProduct   // still null
+jsif (selectedProduct == null) return;
+This says — if we searched all 54 products and found nothing, stop the function. Don't crash.
+
+WHAT IS return?
+return immediately stops a function and exits it. Nothing after return runs.
+jsif (selectedProduct == null) return;
+// if product not found, STOP HERE. Don't run anything below.
+
+// in feedback validation:
+if (name == '') return showError('Please enter name');
+// if name is empty, show error and STOP. Don't check the rest.
+Why: Safety. Prevents the code below from running when something is wrong and crashing the page.
+
+WHAT IS break?
+break stops a for loop immediately.
+jsfor (var i = 0; i < products.length; i++) {
+    if (products[i].id == productId) {
+        selectedProduct = products[i];
+        break;   // STOP THE LOOP — no need to check remaining products
+    }
+}
+Without break: Loop continues checking all remaining 50 products even after finding the answer — waste of time
+With break: Found it on product 5? Stop immediately. Don't check 6 through 54.
+Why: Efficiency. Once we have what we need, stop searching.
+
+WHAT IS textContent?
+Sets or reads the visible text inside an HTML element.
+jsdocument.getElementById('modalName').textContent = selectedProduct.name;
+// finds element with id="modalName" in HTML
+// sets its text to the product name
+// before: <h2 id="modalName"></h2>
+// after:  <h2 id="modalName">Pressure Cooker 5L</h2>
+Why: This is how JavaScript puts data from our products array into the visible HTML
+
+WHAT IS .src?
+The src attribute on an image element — it is the file path of the image.
+jsdocument.getElementById('modalImage').src = selectedProduct.image;
+// before: <img id="modalImage" src="">
+// after:  <img id="modalImage" src="section-1/PRESSURE COOKER (1).jpeg">
+Why: We can't use textContent for images — images need src. So we set the src property directly.
+
+WHAT IS badge.className?
+className is the entire class attribute of an element as one string. Setting it replaces ALL existing classes.
+jsbadge.className = 'badge-premium';
+// before: <span class="badge-standard">Standard</span>
+// after:  <span class="badge-premium">Premium</span>
+// completely replaced — not added, replaced
+Why not classList.add? Because if we add badge-premium to badge-standard, the element has BOTH classes. We want only one. className = replaces everything cleanly.
+
+WHAT IS event.preventDefault()?
+Normally when a form is submitted, the browser reloads the whole page. preventDefault() stops that.
+jsfunction submitFeedback(event) {
+    event.preventDefault();
+    // now page won't reload
+    // our JavaScript runs instead
+}
+Before: Form submits → page reloads → all validation code is ignored
+After preventDefault: Page stays as is → our JavaScript checks the form → shows errors or success
+Why: Without it our validation code would never have time to run
+
+WHAT IS .trim()?
+Removes spaces from the start and end of text.
+js'   Ahmed   '.trim()    // gives 'Ahmed'
+'  '.trim()             // gives '' — empty string
+Why: If user just presses spacebar in a required field, the value would be '   '. Without trim, it looks like something was typed. With trim it becomes '' which our validation catches as empty.
+
+WHAT IS setTimeout()?
+Runs a function after a delay. The number is in milliseconds. 1000ms = 1 second.
+jssetTimeout(function() {
+    document.getElementById('successMessage').style.display = 'none';
+}, 4000);
+// after 4 seconds, hide the success message automatically
+Before: Success message is visible
+After 4 seconds: setTimeout fires, runs the function, hides the message
+Why: So the success message disappears on its own — user doesn't have to close it
+
+WHAT IS new Date().getDay()?
+new Date() creates an object representing right now — current date and time.
+.getDay() gives the current day of the week as a number.
+js// 0 = Sunday
+// 1 = Monday
+// 2 = Tuesday
+// 3 = Wednesday
+// 4 = Thursday
+// 5 = Friday
+// 6 = Saturday
+
+var todayNumber = new Date().getDay();
+// if today is Wednesday, todayNumber = 3
+Used with arrays:
+jsvar dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var offers   = ['2x Points','10% OFF','5% OFF','15% OFF','10% OFF','20% OFF','Free Delivery'];
+
+dayNames[3]   // 'Wednesday'
+offers[3]     // '15% OFF Selected Items'
+Why: The day number matches the array index perfectly. Same number gives us the day name AND the correct offer.
+
+WHAT IS document.createElement()?
+Creates a new HTML element in memory — it doesn't appear on the page yet.
+jsvar option = document.createElement('option');
+// creates <option></option> in memory — not on page yet
+
+option.value       = products[i].name;  // set its value
+option.textContent = products[i].name;  // set its visible text
+
+dropdown.appendChild(option);
+// NOW add it to the dropdown on the page
+// <select> now contains this new <option>
+Why: Instead of writing 54 option elements in HTML manually, JavaScript creates them automatically from the products array. Much cleaner.
+
+WHAT IS appendChild()?
+Adds an element inside another element in the HTML.
+jsdropdown.appendChild(option);
+// takes the option we created in memory
+// puts it inside the dropdown select element
+// before: <select id="product"></select>
+// after:  <select id="product"><option value="Pressure Cooker">Pressure Cooker</option></select>
+
+ONE LINE ANSWERS FOR PRESENTATION
+WordSimple Meaningvarcreates a storage boxfunctiona set of instructions with a namewindowthe browser tabdocumentthe HTML pagenullnothing / emptyreturnstop the function nowbreakstop the loop nowclassListthe list of CSS classes on an elementtextContentthe visible text inside an elementlengthhow many items in a listincludes()does this text contain that wordtoLowerCase()convert to small letterstrim()remove spaces from start and enddisplay:nonehide element completelydisplay:blockshow elementgetAttribute()read a data attribute valueappendChild()add element inside another elementpreventDefault()stop the page from refreshingsetTimeout()run something after a delaygetDay()get today's day number 0-6

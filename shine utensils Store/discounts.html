@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shine Utensils - Discounts</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="cards.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-utensils"></i> Shine Utensils</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="discounts.html">Discounts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comparison.html">Compare</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> <span class="badge bg-danger cart-badge" style="font-size: 0.65rem; padding: 3px 6px; transform: translateY(-2px);">0</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="container">
+        <h1>Discounts & Offers</h1>
+        <p>New deals every day of the week!</p>
+    </div>
+</section>
+
+<!-- TODAY'S OFFER BANNER -->
+<section style="background: var(--gold); padding: 20px;">
+    <div class="container text-center">
+        <h4 style="color: var(--dark); margin: 0;">
+            <i class="fas fa-bolt"></i> Today's Deal: <span id="todayOffer">Loading...</span>
+        </h4>
+    </div>
+</section>
+
+<!-- WEEKLY DEALS -->
+<section style="background: var(--bg);">
+    <div class="container">
+        <h2 class="section-title">Weekly Deals</h2>
+        <div class="row g-4">
+
+            <div class="col-sm-6 col-lg-3 slide-left">
+                <div class="discount-card">
+                    <h4>Monday</h4>
+                    <div class="discount-percent">10%</div>
+                    <p>OFF on All Products</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 slide-left">
+                <div class="discount-card">
+                    <h4>Tuesday</h4>
+                    <div class="discount-percent">5%</div>
+                    <p>OFF on Cookware</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 slide-right">
+                <div class="discount-card featured">
+                    <h4>Wednesday</h4>
+                    <div class="discount-percent">15%</div>
+                    <p>OFF on Selected Items</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 slide-right">
+                <div class="discount-card">
+                    <h4>Thursday</h4>
+                    <div class="discount-percent">10%</div>
+                    <p>OFF on Premium Products</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 slide-left">
+                <div class="discount-card featured">
+                    <h4>Friday</h4>
+                    <div class="discount-percent">20%</div>
+                    <p>OFF on Sets & Knives</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 slide-left">
+                <div class="discount-card">
+                    <h4>Saturday</h4>
+                    <div class="discount-percent">Free</div>
+                    <p>Delivery Above PKR 3,000</p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3 slide-right">
+                <div class="discount-card">
+                    <h4>Sunday</h4>
+                    <div class="discount-percent">2x</div>
+                    <p>Loyalty Points on All Orders</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- HOW TO AVAIL -->
+<section style="background: var(--white);">
+    <div class="container">
+        <h2 class="section-title">How to Avail Discounts</h2>
+        <div class="row g-4 text-center">
+            <div class="col-md-4 slide-left">
+                <div class="why-card">
+                    <i class="fas fa-store fa-2x" style="color: var(--gold);"></i>
+                    <h5 style="margin: 14px 0 8px;">Visit Any Branch</h5>
+                    <p style="color: var(--muted); font-size: 0.9rem;">Walk into any of our 6 branches and show today's deal at the counter.</p>
+                </div>
+            </div>
+            <div class="col-md-4 slide-left">
+                <div class="why-card">
+                    <i class="fas fa-mobile-alt fa-2x" style="color: var(--gold);"></i>
+                    <h5 style="margin: 14px 0 8px;">Call & Order</h5>
+                    <p style="color: var(--muted); font-size: 0.9rem;">Call us at 0300-1234567 and mention the day's offer to get the discount.</p>
+                </div>
+            </div>
+            <div class="col-md-4 slide-right">
+                <div class="why-card">
+                    <i class="fas fa-tag fa-2x" style="color: var(--gold);"></i>
+                    <h5 style="margin: 14px 0 8px;">No Coupon Needed</h5>
+                    <p style="color: var(--muted); font-size: 0.9rem;">All weekly discounts are applied automatically — no coupon or code required.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Don't miss today's deal!</h2>
+        <p>Browse our full product range and save big</p>
+        <a href="products.html" class="btn-main">Shop Now</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <h5><i class="fas fa-utensils"></i> Shine Utensils</h5>
+                <p>Premium kitchen solutions for every home. Serving customers since 2010.</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="discounts.html">Current Offers</a></li>
+                    <li><a href="comparison.html">Compare Products</a></li>
+                    <li><a href="feedback.html">Give Feedback</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Company</h5>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Follow Us</h5>
+                <p>Stay connected with us on social media.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2010-2026 Shine Utensils. All rights reserved.</p>
+            <p>Designed & Developed for eProject | Sem-1</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

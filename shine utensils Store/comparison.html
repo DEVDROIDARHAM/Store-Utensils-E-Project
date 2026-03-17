@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shine Utensils - Compare Products</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="forms.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-utensils"></i> Shine Utensils</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="discounts.html">Discounts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="comparison.html">Compare</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> <span class="badge bg-danger cart-badge" style="font-size: 0.65rem; padding: 3px 6px; transform: translateY(-2px);">0</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="container">
+        <h1>Compare Products</h1>
+        <p>Side by side comparison to help you choose the right product</p>
+    </div>
+</section>
+
+<!-- DYNAMIC COMPARISON UI -->
+<section style="background: var(--bg); min-height: 60vh;">
+    <div class="container">
+        
+        <div class="row mb-5 align-items-end" style="background: var(--white); padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <div class="col-md-5">
+                <label class="form-label" style="font-weight: 600; color: var(--primary);">Select Product 1</label>
+                <select id="compareProduct1" class="form-select" onchange="renderComparison()">
+                    <option value="">-- Choose First Product --</option>
+                </select>
+            </div>
+            <div class="col-md-2 text-center my-3 my-md-0">
+                <div style="display:inline-block; background: var(--gold); color: var(--white); width: 45px; height: 45px; line-height: 45px; border-radius: 50%; font-weight: bold; font-size: 1.1rem;">VS</div>
+            </div>
+            <div class="col-md-5">
+                <label class="form-label" style="font-weight: 600; color: var(--primary);">Select Product 2</label>
+                <select id="compareProduct2" class="form-select" onchange="renderComparison()">
+                    <option value="">-- Choose Second Product --</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="comparisonResult" style="display: none; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0" style="vertical-align: middle;">
+                    <thead style="background: var(--primary); color: var(--white); text-align: center;">
+                        <tr>
+                            <th style="width: 20%; background: #153A50; font-weight: 600; font-size: 1.1rem; padding: 20px;">Specification</th>
+                            <th style="width: 40%; font-weight: 600; font-size: 1.1rem; padding: 20px;" id="cName1">Product 1</th>
+                            <th style="width: 40%; font-weight: 600; font-size: 1.1rem; padding: 20px;" id="cName2">Product 2</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                        <tr>
+                            <td style="background: var(--bg); font-weight: 600; color: var(--primary); text-align: left; padding-left: 20px;">Image</td>
+                            <td style="padding: 20px;"><img id="cImg1" src="" style="max-height: 180px; object-fit: contain; border-radius: 6px;"></td>
+                            <td style="padding: 20px;"><img id="cImg2" src="" style="max-height: 180px; object-fit: contain; border-radius: 6px;"></td>
+                        </tr>
+                        <tr>
+                            <td style="background: var(--bg); font-weight: 600; color: var(--primary); text-align: left; padding-left: 20px;">Price</td>
+                            <td id="cPrice1" style="font-size: 1.1rem; font-weight: 600; color: #2ecc71;"></td>
+                            <td id="cPrice2" style="font-size: 1.1rem; font-weight: 600; color: #2ecc71;"></td>
+                        </tr>
+                        <tr>
+                            <td style="background: var(--bg); font-weight: 600; color: var(--primary); text-align: left; padding-left: 20px;">Category</td>
+                            <td id="cCat1"></td>
+                            <td id="cCat2"></td>
+                        </tr>
+                        <tr style="background: #fafafa;">
+                            <td style="background: var(--bg); font-weight: 600; color: var(--primary); text-align: left; padding-left: 20px;">Quality Level</td>
+                            <td id="cQual1"></td>
+                            <td id="cQual2"></td>
+                        </tr>
+                        <tr>
+                            <td style="background: var(--bg); font-weight: 600; color: var(--primary); text-align: left; padding-left: 20px;">Material</td>
+                            <td id="cMat1"></td>
+                            <td id="cMat2"></td>
+                        </tr>
+                        <tr style="background: #fafafa;">
+                            <td style="background: var(--bg); font-weight: 600; color: var(--primary); text-align: left; padding-left: 20px;">Weight</td>
+                            <td id="cWeight1"></td>
+                            <td id="cWeight2"></td>
+                        </tr>
+                        <tr>
+                            <td style="background: var(--bg); font-weight: 600; color: var(--primary); text-align: left; padding-left: 20px;">Warranty</td>
+                            <td id="cWarranty1"></td>
+                            <td id="cWarranty2"></td>
+                        </tr>
+                        <tr style="background: #fafafa;">
+                            <td style="background: var(--bg); font-weight: 600; color: var(--primary); text-align: left; padding-left: 20px;">Best For</td>
+                            <td id="cBest1"></td>
+                            <td id="cBest2"></td>
+                        </tr>
+                        <tr>
+                            <td style="background: var(--bg); font-weight: 600; color: var(--primary); text-align: left; padding-left: 20px;">Customer Rating</td>
+                            <td id="cRate1" style="color: var(--gold); font-weight: 600;"></td>
+                            <td id="cRate2" style="color: var(--gold); font-weight: 600;"></td>
+                        </tr>
+                        <tr style="background: #fafafa;">
+                            <td style="background: var(--bg); font-weight: 600; color: var(--primary); text-align: left; padding-left: 20px;">Action</td>
+                            <td style="padding: 15px;"><button class="btn-main" id="cAdd1">Add to Cart</button></td>
+                            <td style="padding: 15px;"><button class="btn-main" id="cAdd2">Add to Cart</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="comparisonEmpty" class="text-center" style="padding: 60px 20px; color: var(--muted);">
+            <i class="fas fa-balance-scale" style="font-size: 3rem; color: #ddd; margin-bottom: 20px;"></i>
+            <h4>Select two products above to see their detailed comparison</h4>
+            <p>Our dynamic comparison tool helps you quickly visually find the right product for your kitchen.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <h5><i class="fas fa-utensils"></i> Shine Utensils</h5>
+                <p>Premium kitchen solutions for every home. Serving customers since 2010.</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="discounts.html">Current Offers</a></li>
+                    <li><a href="comparison.html">Compare Products</a></li>
+                    <li><a href="feedback.html">Give Feedback</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Company</h5>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Follow Us</h5>
+                <p>Stay connected with us on social media.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2010-2026 Shine Utensils. All rights reserved.</p>
+            <p>Designed & Developed for eProject | Sem-1</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="products-render.js"></script>
+<script src="script.js"></script>
+
+<script>
+    // Populate Comparison Dropdowns
+    window.addEventListener('DOMContentLoaded', function() {
+        if(typeof products !== 'undefined') {
+            const select1 = document.getElementById('compareProduct1');
+            const select2 = document.getElementById('compareProduct2');
+            
+            // Sort products alphabetically
+            let sortedProducts = [...products].sort((a,b) => a.name.localeCompare(b.name));
+            
+            sortedProducts.forEach(p => {
+                select1.add(new Option(p.name, p.id));
+                select2.add(new Option(p.name, p.id));
+            });
+        }
+    });
+
+    function renderComparison() {
+        let id1 = document.getElementById('compareProduct1').value;
+        let id2 = document.getElementById('compareProduct2').value;
+        
+        let resultDiv = document.getElementById('comparisonResult');
+        let emptyDiv = document.getElementById('comparisonEmpty');
+        
+        if (id1 && id2) {
+            let p1 = products.find(p => p.id == id1);
+            let p2 = products.find(p => p.id == id2);
+            
+            if(p1 && p2) {
+                // Generate UI
+                document.getElementById('cName1').textContent = p1.name;
+                document.getElementById('cName2').textContent = p2.name;
+                
+                document.getElementById('cImg1').src = p1.image;
+                document.getElementById('cImg2').src = p2.image;
+                
+                document.getElementById('cPrice1').textContent = "PKR " + p1.price;
+                document.getElementById('cPrice2').textContent = "PKR " + p2.price;
+                
+                document.getElementById('cCat1').innerHTML = `<span class="badge" style="background:var(--gold);color:var(--dark);">${p1.category}</span>`;
+                document.getElementById('cCat2').innerHTML = `<span class="badge" style="background:var(--gold);color:var(--dark);">${p2.category}</span>`;
+                
+                // Colorize Quality
+                document.getElementById('cQual1').innerHTML = `<span class="${p1.quality === 'Premium' ? 'badge-premium' : 'badge-standard'}">${p1.quality}</span>`;
+                document.getElementById('cQual2').innerHTML = `<span class="${p2.quality === 'Premium' ? 'badge-premium' : 'badge-standard'}">${p2.quality}</span>`;
+                
+                document.getElementById('cMat1').textContent = p1.material;
+                document.getElementById('cMat2').textContent = p2.material;
+                
+                document.getElementById('cWeight1').textContent = p1.weight;
+                document.getElementById('cWeight2').textContent = p2.weight;
+                
+                document.getElementById('cWarranty1').textContent = p1.warranty;
+                document.getElementById('cWarranty2').textContent = p2.warranty;
+                
+                document.getElementById('cBest1').textContent = p1.bestFor;
+                document.getElementById('cBest2').textContent = p2.bestFor;
+                
+                document.getElementById('cRate1').innerHTML = `<i class="fas fa-star"></i> ${p1.rating}`;
+                document.getElementById('cRate2').innerHTML = `<i class="fas fa-star"></i> ${p2.rating}`;
+                
+                document.getElementById('cAdd1').onclick = function() { addToCart(p1.id); };
+                document.getElementById('cAdd2').onclick = function() { addToCart(p2.id); };
+                
+                // Show comparisons
+                emptyDiv.style.display = 'none';
+                resultDiv.style.display = 'block';
+            }
+        } else {
+            // Hide comparison
+            resultDiv.style.display = 'none';
+            emptyDiv.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>

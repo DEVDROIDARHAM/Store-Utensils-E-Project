@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shine Utensils - Feedback</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="forms.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-utensils"></i> Shine Utensils</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="discounts.html">Discounts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comparison.html">Compare</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> <span class="badge bg-danger cart-badge" style="font-size: 0.65rem; padding: 3px 6px; transform: translateY(-2px);">0</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="container">
+        <h1>Give Feedback</h1>
+        <p>We value your opinion — help us improve!</p>
+    </div>
+</section>
+
+<!-- FEEDBACK FORM -->
+<section style="background: var(--bg);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+
+                <!-- SUCCESS MESSAGE -->
+                <div id="successMessage" class="alert alert-success mb-4" style="display: none;">
+                    <i class="fas fa-check-circle"></i> Thank you! Your feedback has been submitted successfully.
+                </div>
+
+                <!-- ERROR MESSAGE -->
+                <div id="errorMessage" class="alert alert-danger mb-4" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i> <span id="errorText"></span>
+                </div>
+
+                <div class="form-box">
+                    <form id="feedbackForm" onsubmit="submitFeedback(event)">
+
+                        <!-- NAME -->
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="Enter your full name">
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                        </div>
+
+                        <!-- PRODUCT -->
+                        <div class="mb-3">
+                            <label class="form-label">Product Purchased</label>
+                            <select id="product" class="form-select">
+                                <option value="">-- Select a product --</option>
+                            </select>
+                        </div>
+
+                        <!-- PRODUCT RATING -->
+                        <div class="mb-3">
+                            <label class="form-label">Product Quality Rating</label>
+                            <div class="rating-group">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="productRating" value="5">
+                                    <span class="form-check-label"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Excellent</span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="productRating" value="4">
+                                    <span class="form-check-label"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Good</span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="productRating" value="3">
+                                    <span class="form-check-label"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Average</span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="productRating" value="2">
+                                    <span class="form-check-label"><i class="fas fa-star"></i><i class="fas fa-star"></i> Below Average</span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="productRating" value="1">
+                                    <span class="form-check-label"><i class="fas fa-star"></i> Poor</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- SERVICE RATING -->
+                        <div class="mb-3">
+                            <label class="form-label">Service Quality Rating</label>
+                            <div class="rating-group">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="serviceRating" value="5">
+                                    <span class="form-check-label"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Excellent</span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="serviceRating" value="4">
+                                    <span class="form-check-label"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Good</span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="serviceRating" value="3">
+                                    <span class="form-check-label"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Average</span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="serviceRating" value="2">
+                                    <span class="form-check-label"><i class="fas fa-star"></i><i class="fas fa-star"></i> Below Average</span>
+                                </label>
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="serviceRating" value="1">
+                                    <span class="form-check-label"><i class="fas fa-star"></i> Poor</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- FEEDBACK TEXT -->
+                        <div class="mb-4">
+                            <label class="form-label">Your Feedback</label>
+                            <textarea id="feedback" class="form-control" placeholder="Write your feedback here (minimum 20 characters)"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-main w-100">Submit Feedback</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <h5><i class="fas fa-utensils"></i> Shine Utensils</h5>
+                <p>Premium kitchen solutions for every home. Serving customers since 2010.</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="discounts.html">Current Offers</a></li>
+                    <li><a href="comparison.html">Compare Products</a></li>
+                    <li><a href="feedback.html">Give Feedback</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Company</h5>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Follow Us</h5>
+                <p>Stay connected with us on social media.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2010-2026 Shine Utensils. All rights reserved.</p>
+            <p>Designed & Developed for eProject | Sem-1</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="products-render.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

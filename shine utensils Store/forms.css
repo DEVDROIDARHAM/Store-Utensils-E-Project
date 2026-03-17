@@ -1,0 +1,97 @@
+/* FORM WRAPPER */
+.form-box {
+    background: var(--white);
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.form-label { font-weight: 700; margin-bottom: 6px; display: block; font-size: 0.95rem; }
+
+.form-control, .form-select {
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    transition: border 0.3s;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(27,73,101,0.1);
+}
+textarea.form-control { resize: vertical; min-height: 120px; }
+
+/* STAR RATING */
+.rating-group { display: flex; flex-direction: column; gap: 8px; }
+.rating-group .form-check { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border); cursor: pointer; }
+.rating-group .form-check:hover { background: var(--bg); }
+.form-check-input:checked { background-color: var(--primary); border-color: var(--primary); }
+.form-check-label i { color: var(--gold); }
+
+/* COMPARISON TABS */
+.comp-tabs .nav-link { color: var(--primary); font-weight: 600; border: 2px solid var(--border); margin-right: 6px; border-radius: 6px 6px 0 0; }
+.comp-tabs .nav-link.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+.comp-tabs .nav-link:hover { background: var(--bg); }
+
+.comp-desc { color: var(--muted); margin-bottom: 20px; font-size: 0.95rem; }
+
+.comp-verdict {
+    background: rgba(201,168,76,0.1);
+    border-left: 4px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+.comp-verdict strong { color: var(--primary); }
+
+/* COMPARISON TABLE */
+table.comp-table { width: 100%; border-collapse: collapse; }
+.comp-table th { background: var(--primary); color: var(--white); padding: 13px 15px; text-align: left; }
+.comp-table td { padding: 12px 15px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.comp-table tr:hover { background: rgba(201,168,76,0.07); }
+.comp-table .lbl { font-weight: 700; color: var(--primary); width: 28%; background: rgba(27,73,101,0.04); }
+
+/* ACCORDION */
+.acc-item { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+.acc-item:hover { box-shadow: 0 3px 10px rgba(27,73,101,0.1); }
+.accordion-button { font-weight: 600; border-left: 4px solid var(--gold); font-size: 0.97rem; }
+.accordion-button:not(.collapsed) { color: var(--primary); background: var(--bg); box-shadow: none; border-left-color: var(--primary); }
+.accordion-button:focus { box-shadow: none; }
+.acc-body { padding: 20px; background: #fafafa; }
+
+/* SPEC TABLE */
+.spec-table { width: 100%; border-collapse: collapse; }
+.spec-table tr { border-bottom: 1px solid var(--border); }
+.spec-table tr:last-child { border-bottom: none; }
+.spec-table td { padding: 11px 0; font-size: 0.9rem; }
+.spec-table .lbl { font-weight: 700; color: var(--primary); width: 40%; padding-right: 16px; }
+.spec-price { font-size: 1.2rem; font-weight: 700; color: var(--primary); padding-top: 12px; margin-top: 12px; border-top: 2px solid var(--border); }
+.spec-price i { color: var(--gold); }
+
+/* CATEGORY HEADER */
+.cat-header {
+    background: linear-gradient(135deg, var(--primary), var(--dark));
+    color: var(--white);
+    padding: 16px 22px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .form-box { padding: 20px; }
+    .comp-table th, .comp-table td { padding: 9px 10px; font-size: 0.82rem; }
+}
+@media (max-width: 576px) {
+    .comp-table { font-size: 0.78rem; }
+    .rating-group .form-check { padding: 6px 10px; }
+}

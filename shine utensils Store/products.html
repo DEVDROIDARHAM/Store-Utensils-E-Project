@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shine Utensils - Products</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="cards.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-utensils"></i> Shine Utensils</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="discounts.html">Discounts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comparison.html">Compare</a></li>
+                    <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> <span class="badge bg-danger cart-badge" style="font-size: 0.65rem; padding: 3px 6px; transform: translateY(-2px);">0</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="container">
+        <h1>Our Products</h1>
+        <p>Browse our collection of 54 premium kitchen products</p>
+    </div>
+</section>
+
+<!-- DAILY OFFERS BANNER -->
+<section style="background: var(--primary); padding: 15px 0;">
+    <div class="container text-center">
+        <h5 style="color: var(--white); margin: 0; font-weight: 500; font-size: 1rem;">
+            <i class="fas fa-tags" style="color: var(--gold); margin-right: 10px;"></i>
+            Looking for daily discounted offers? 
+            <a href="discounts.html" style="color: var(--gold); text-decoration: underline; margin-left: 8px; font-weight: bold;">Check out our Discounts page!</a>
+        </h5>
+    </div>
+</section>
+
+<!-- SEARCH & FILTER -->
+<section style="background: var(--white); padding: 30px 20px;">
+    <div class="container">
+        <div class="row align-items-center g-3">
+            <div class="col-md-5">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search products..." onkeyup="filterProducts()">
+            </div>
+            <div class="col-md-7">
+                <div class="filter-btns">
+                    <button class="btn-filter active" onclick="filterByCategory('all', this)">All</button>
+                    <button class="btn-filter" onclick="filterByCategory('Cookware', this)">Cookware</button>
+                    <button class="btn-filter" onclick="filterByCategory('Cutlery', this)">Cutlery</button>
+                    <button class="btn-filter" onclick="filterByCategory('Utensils', this)">Utensils</button>
+                    <button class="btn-filter" onclick="filterByCategory('Serving', this)">Serving</button>
+                    <button class="btn-filter" onclick="filterByCategory('Sets', this)">Sets</button>
+                </div>
+            </div>
+        </div>
+        <p id="productCount" style="margin-top: 12px; color: var(--muted); font-size: 0.9rem;">Showing all 54 products</p>
+    </div>
+</section>
+
+<!-- PRODUCTS GRID -->
+<section style="background: var(--bg);">
+    <div class="container">
+        <div class="row g-4" id="productGrid" style="align-items: stretch;">
+
+            <!-- COOKWARE -->
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="stainless steel frying pan">
+                <div class="product-card" onclick="openModal(1)">
+                    <div class="product-img-wrap"><img src="pan-1.webp" alt="Stainless Steel Frying Pan"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Stainless Steel Frying Pan 10"</h5>
+                        <p>Professional heavy-duty frying pan with heat-resistant handles.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 2,500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(1)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="non stick frying pan">
+                <div class="product-card" onclick="openModal(2)">
+                    <div class="product-img-wrap"><img src="pan-2.webp" alt="Non-Stick Frying Pan"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Non-Stick Frying Pan 9.5"</h5>
+                        <p>Non-stick coated pan for easy cooking and quick cleanup.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(2)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="pressure cooker 5l">
+                <div class="product-card" onclick="openModal(3)">
+                    <div class="product-img-wrap"><img src="section-1/PRESSURE COOKER (1).jpeg" alt="Pressure Cooker 5L"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Pressure Cooker 5L</h5>
+                        <p>Stainless steel pressure cooker with advanced safety features.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 3,500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(3)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="pressure cooker 7l">
+                <div class="product-card" onclick="openModal(4)">
+                    <div class="product-img-wrap"><img src="section-1/presure cooker 2.jpeg" alt="Pressure Cooker 7L"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Pressure Cooker 7L</h5>
+                        <p>Large capacity pressure cooker for family cooking.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 4,200</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(4)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="pressure cooker 10l">
+                <div class="product-card" onclick="openModal(5)">
+                    <div class="product-img-wrap"><img src="section-1/PRESSURE COOKER (7).jpeg" alt="Pressure Cooker 10L"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Pressure Cooker 10L</h5>
+                        <p>Extra-large pressure cooker for bulk cooking and parties.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 5,500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(5)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="stainless steel pot 5l">
+                <div class="product-card" onclick="openModal(6)">
+                    <div class="product-img-wrap"><img src="section-1/PRESSURE COOKER (3).jpeg" alt="Steel Pot 5L"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Stainless Steel Pot 5L</h5>
+                        <p>Large cooking pot with heat-resistant handles.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 3,000</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(6)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="stainless steel pot 8l">
+                <div class="product-card" onclick="openModal(7)">
+                    <div class="product-img-wrap"><img src="section-1/PRESSURE COOKER (4).jpeg" alt="Steel Pot 8L"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Stainless Steel Pot 8L</h5>
+                        <p>Extra large cooking pot with sturdy base.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 3,800</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(7)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="cast iron pan">
+                <div class="product-card" onclick="openModal(8)">
+                    <div class="product-img-wrap"><img src="section-1/cast iron name.jpeg" alt="Cast Iron Pan"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Cast Iron Pan 10"</h5>
+                        <p>Pre-seasoned cast iron pan for excellent heat retention.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 2,200</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(8)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="cast iron dutch oven">
+                <div class="product-card" onclick="openModal(9)">
+                    <div class="product-img-wrap"><img src="section-1/cast iron dutch.jpeg" alt="Dutch Oven"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Cast Iron Dutch Oven 5.5L</h5>
+                        <p>Versatile cast iron dutch oven for cooking and baking.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 3,500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(9)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="aluminum pressure cooker">
+                <div class="product-card" onclick="openModal(10)">
+                    <div class="product-img-wrap"><img src="section-1/aluminium.jpeg" alt="Aluminum Pressure Cooker"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Aluminum Pressure Cooker 3L</h5>
+                        <p>Lightweight aluminum pressure cooker for quick cooking.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,800</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(10)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="non stick sauce pan">
+                <div class="product-card" onclick="openModal(11)">
+                    <div class="product-img-wrap"><img src="section-1/sauce pan.jpeg" alt="Sauce Pan"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Non-Stick Sauce Pan</h5>
+                        <p>Small non-stick pan for sauces and gravies.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,200</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(11)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="stainless steel tawa">
+                <div class="product-card" onclick="openModal(12)">
+                    <div class="product-img-wrap"><img src="section-1/stainless steel tawa.jpeg" alt="Stainless Steel Tawa"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Stainless Steel Tawa</h5>
+                        <p>Flat griddle for making rotis and pancakes.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 800</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.4</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(12)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="copper bottom cookware">
+                <div class="product-card" onclick="openModal(13)">
+                    <div class="product-img-wrap"><img src="section-1/cooper cookware bottom.jpeg" alt="Copper Bottom Cookware"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Copper Bottom Cookware</h5>
+                        <p>Professional copper-bottomed cooking vessel.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 4,500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(13)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="hard anodized pot">
+                <div class="product-card" onclick="openModal(14)">
+                    <div class="product-img-wrap"><img src="section-1/hard anozied pot.jpeg" alt="Hard Anodized Pot"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Hard Anodized Pot</h5>
+                        <p>Durable hard-anodized cooking pot.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 2,800</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(14)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cookware" data-search="stainless steel wok">
+                <div class="product-card" onclick="openModal(15)">
+                    <div class="product-img-wrap"><img src="section-1/steel wok.jpeg" alt="Stainless Steel Wok"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Stainless Steel Wok</h5>
+                        <p>Traditional wok for stir-frying and cooking.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 2,100</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(15)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CUTLERY -->
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="chef knife">
+                <div class="product-card" onclick="openModal(16)">
+                    <div class="product-img-wrap"><img src="section-2/chef knife.jpeg" alt="Chef Knife"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Chef Knife 8"</h5>
+                        <p>Professional-grade chef knife with sharp blade.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,200</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(16)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="paring knife set">
+                <div class="product-card" onclick="openModal(17)">
+                    <div class="product-img-wrap"><img src="section-2/pairing knife.jpeg" alt="Paring Knife Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Paring Knife Set (3)</h5>
+                        <p>Set of 3 paring knives for precise vegetable prep.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 800</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(17)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="butcher knife">
+                <div class="product-card" onclick="openModal(18)">
+                    <div class="product-img-wrap"><img src="section-2/butcher knife.jpeg" alt="Butcher Knife"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Butcher Knife 10"</h5>
+                        <p>Heavy-duty butcher knife for meat cutting.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(18)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="kitchen knife set">
+                <div class="product-card" onclick="openModal(19)">
+                    <div class="product-img-wrap"><img src="section-2/set of knife.jpeg" alt="Kitchen Knife Set"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Kitchen Knife Set (5)</h5>
+                        <p>Professional 5-piece knife set with stand.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 3,000</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(19)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="bread knife">
+                <div class="product-card" onclick="openModal(20)">
+                    <div class="product-img-wrap"><img src="section-2/bread knife.jpeg" alt="Bread Knife"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Bread Knife 8"</h5>
+                        <p>Serrated bread knife for cutting bread.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 650</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.4</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(20)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="vegetable knife set">
+                <div class="product-card" onclick="openModal(21)">
+                    <div class="product-img-wrap"><img src="section-2/veg knife set.jpeg" alt="Vegetable Knife Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Vegetable Knife Set (4)</h5>
+                        <p>Set of vegetable knives in various sizes.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 950</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(21)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="boning knife">
+                <div class="product-card" onclick="openModal(22)">
+                    <div class="product-img-wrap"><img src="section-2/boning.jpeg" alt="Boning Knife"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Boning Knife</h5>
+                        <p>Specialized knife for bone removal.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 900</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(22)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="carving knife set">
+                <div class="product-card" onclick="openModal(23)">
+                    <div class="product-img-wrap"><img src="section-2/carving.jpeg" alt="Carving Knife Set"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Carving Knife Set (2)</h5>
+                        <p>Professional carving knife set with fork.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,600</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(23)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="damascus chef knife">
+                <div class="product-card" onclick="openModal(24)">
+                    <div class="product-img-wrap"><img src="section-2/damascus.jpeg" alt="Damascus Chef Knife"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Damascus Chef Knife</h5>
+                        <p>Premium Damascus steel chef knife.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 2,500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(24)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="steak knife set">
+                <div class="product-card" onclick="openModal(25)">
+                    <div class="product-img-wrap"><img src="section-2/steak knfie.jpeg" alt="Steak Knife Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Steak Knife Set (6)</h5>
+                        <p>Set of serrated steak knives.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,200</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(25)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="japanese santoku knife">
+                <div class="product-card" onclick="openModal(26)">
+                    <div class="product-img-wrap"><img src="section-2/japanese.jpeg" alt="Japanese Santoku Knife"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Japanese Santoku Knife</h5>
+                        <p>Traditional Japanese multi-purpose knife.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,800</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(26)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Cutlery" data-search="cleaver knife">
+                <div class="product-card" onclick="openModal(27)">
+                    <div class="product-img-wrap"><img src="section-2/cleaver knife.jpeg" alt="Cleaver Knife"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Cleaver Knife 7"</h5>
+                        <p>Heavy-duty cleaver for chopping bones.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,100</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(27)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UTENSILS -->
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="spoon spatula set">
+                <div class="product-card" onclick="openModal(28)">
+                    <div class="product-img-wrap"><img src="section 3/spoon spatula.jpeg" alt="Spoon Spatula Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Spoon & Spatula Set (3)</h5>
+                        <p>Heat-resistant spoons and spatulas for cooking.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 600</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(28)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="measuring cups">
+                <div class="product-card" onclick="openModal(29)">
+                    <div class="product-img-wrap"><img src="section 3/mearuing cupset.jpeg" alt="Measuring Cups Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Measuring Cups Set (4)</h5>
+                        <p>Stainless steel measuring cups for precise cooking.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 400</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(29)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="measuring spoons">
+                <div class="product-card" onclick="openModal(30)">
+                    <div class="product-img-wrap"><img src="section 3/measuring spoonset.jpeg" alt="Measuring Spoons Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Measuring Spoons Set (6)</h5>
+                        <p>Accurate measuring spoons for ingredients.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 350</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.1</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(30)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="cooking utensil set">
+                <div class="product-card" onclick="openModal(31)">
+                    <div class="product-img-wrap"><img src="section 3/cooking utensil.jpeg" alt="Cooking Utensil Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Cooking Utensil Set (12)</h5>
+                        <p>Complete 12-piece cooking utensil set with storage rack.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,200</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.4</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(31)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="stainless steel whisk">
+                <div class="product-card" onclick="openModal(32)">
+                    <div class="product-img-wrap"><img src="section 3/steel whisk.jpeg" alt="Stainless Steel Whisk"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Stainless Steel Whisk</h5>
+                        <p>Durable stainless steel whisk for mixing.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 350</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(32)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="slotted turner">
+                <div class="product-card" onclick="openModal(33)">
+                    <div class="product-img-wrap"><img src="section 3/slotted turner.jpeg" alt="Slotted Turner Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Slotted Turner Set (2)</h5>
+                        <p>Professional slotted turners for flipping food.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(33)">Add to Cart</button>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="ladle set">
+                <div class="product-card" onclick="openModal(34)">
+                    <div class="product-img-wrap"><img src="section 3/ladlay set.jpeg" alt="Ladle Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Ladle Set (2)</h5>
+                        <p>Stainless steel ladles for soups and gravies.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 450</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(34)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="tongs set">
+                <div class="product-card" onclick="openModal(35)">
+                    <div class="product-img-wrap"><img src="section 3/tong tong set.jpeg" alt="Tongs Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Tongs Set (2)</h5>
+                        <p>Heat-resistant kitchen tongs.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 550</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(35)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="wooden spoon set">
+                <div class="product-card" onclick="openModal(36)">
+                    <div class="product-img-wrap"><img src="section 3/wooden spoon set.jpeg" alt="Wooden Spoon Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Wooden Spoon Set (4)</h5>
+                        <p>Natural wooden spoons for cooking.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.1</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(36)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="silicone baking tools">
+                <div class="product-card" onclick="openModal(37)">
+                    <div class="product-img-wrap"><img src="section 3/sillicon baking tools.jpeg" alt="Silicone Baking Tools"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Silicone Baking Tools (5)</h5>
+                        <p>Flexible silicone tools for baking.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 650</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(37)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="colander strainer">
+                <div class="product-card" onclick="openModal(38)">
+                    <div class="product-img-wrap"><img src="section 3/colander set.jpeg" alt="Colander Strainer Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Colander & Strainer Set</h5>
+                        <p>Stainless steel colander and strainer.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 700</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(38)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Utensils" data-search="peeler set">
+                <div class="product-card" onclick="openModal(39)">
+                    <div class="product-img-wrap"><img src="section 3/peeler.jpeg" alt="Peeler Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Peeler Set (3)</h5>
+                        <p>Vegetable peelers in various styles.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 400</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(39)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SERVING -->
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Serving" data-search="serving dishes set">
+                <div class="product-card" onclick="openModal(40)">
+                    <div class="product-img-wrap"><img src="section-4/serving dishes set.jpeg" alt="Serving Dishes Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Serving Dishes Set (3)</h5>
+                        <p>Elegant serving dishes for special occasions.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 1,200</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.4</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(40)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Serving" data-search="serving spoon">
+                <div class="product-card" onclick="openModal(41)">
+                    <div class="product-img-wrap"><img src="section-4/serving spoon.jpeg" alt="Serving Spoon"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Stainless Steel Serving Spoon</h5>
+                        <p>Large serving spoon for serving portions.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 400</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(41)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Serving" data-search="serving platter">
+                <div class="product-card" onclick="openModal(42)">
+                    <div class="product-img-wrap"><img src="section-4/platter.jpeg" alt="Serving Platter Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Serving Platter Set (2)</h5>
+                        <p>Beautiful platters for food presentation.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 950</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(42)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Serving" data-search="salad servers">
+                <div class="product-card" onclick="openModal(43)">
+                    <div class="product-img-wrap"><img src="section-4/salad server set.jpeg" alt="Salad Servers Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Salad Servers Set (2)</h5>
+                        <p>Elegant salad servers for serving salads.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 600</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(43)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Serving" data-search="gravy boat">
+                <div class="product-card" onclick="openModal(44)">
+                    <div class="product-img-wrap"><img src="section-4/gravy boat.jpeg" alt="Gravy Boat"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Gravy Boat</h5>
+                        <p>Porcelain gravy boat with spoon.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.1</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(44)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Serving" data-search="serving tray">
+                <div class="product-card" onclick="openModal(45)">
+                    <div class="product-img-wrap"><img src="section-4/serving tray.jpeg" alt="Serving Tray"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Serving Tray</h5>
+                        <p>Stainless steel serving tray for events.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 800</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(45)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Serving" data-search="butter dishes">
+                <div class="product-card" onclick="openModal(46)">
+                    <div class="product-img-wrap"><img src="section-4/butter dishes set.jpeg" alt="Butter Dishes Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Butter Dishes Set (2)</h5>
+                        <p>Small butter dishes with lids.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 450</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.0</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(46)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Serving" data-search="condiment jars">
+                <div class="product-card" onclick="openModal(47)">
+                    <div class="product-img-wrap"><img src="section-4/condiment jars.jpeg" alt="Condiment Jars"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Condiment Jars (3)</h5>
+                        <p>Glass jars for serving condiments.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 700</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.2</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(47)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Serving" data-search="wine decanter">
+                <div class="product-card" onclick="openModal(48)">
+                    <div class="product-img-wrap"><img src="section-4/wine decanter.jpeg" alt="Wine Decanter Set"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Wine Decanter Set</h5>
+                        <p>Elegant wine decanter for wine service.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 2,000</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(48)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Serving" data-search="serving bowl set">
+                <div class="product-card" onclick="openModal(49)">
+                    <div class="product-img-wrap"><img src="section-4/serving bowl set.jpeg" alt="Serving Bowl Set"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Serving Bowl Set (2)</h5>
+                        <p>Large serving bowls for salads and food.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 850</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.3</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(49)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETS -->
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Sets" data-search="cookware set 6 piece">
+                <div class="product-card" onclick="openModal(50)">
+                    <div class="product-img-wrap"><img src="section 5/cookware 1.jpeg" alt="Cookware Set 6-piece"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Cookware Set (6-piece)</h5>
+                        <p>Complete 6-piece cookware set with lids.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 4,000</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.5</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(50)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Sets" data-search="cookware set 10 piece">
+                <div class="product-card" onclick="openModal(51)">
+                    <div class="product-img-wrap"><img src="section 5/cookware 2.jpeg" alt="Cookware Set 10-piece"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Cookware Set (10-piece)</h5>
+                        <p>Premium 10-piece non-stick cookware set.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 6,500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(51)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Sets" data-search="premium kitchen essentials">
+                <div class="product-card" onclick="openModal(52)">
+                    <div class="product-img-wrap"><img src="section 5/premium kitchen essentials.jpeg" alt="Premium Kitchen Essentials"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Premium Kitchen Essentials Set</h5>
+                        <p>Complete kitchen essentials with 20+ items.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 8,000</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(52)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Sets" data-search="stainless steel deluxe set">
+                <div class="product-card" onclick="openModal(53)">
+                    <div class="product-img-wrap"><img src="section 5/deluxe.jpeg" alt="Deluxe Set 8-piece"></div>
+                    <div class="product-body">
+                        <span class="badge-premium">Premium</span>
+                        <h5>Stainless Steel Deluxe Set (8-piece)</h5>
+                        <p>Deluxe 8-piece stainless steel set.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 5,000</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.6</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(53)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-4 d-flex align-items-stretch" data-category="Sets" data-search="kitchen starter pack">
+                <div class="product-card" onclick="openModal(54)">
+                    <div class="product-img-wrap"><img src="section 5/kitchen starter pack.jpeg" alt="Kitchen Starter Pack"></div>
+                    <div class="product-body">
+                        <span class="badge-standard">Standard</span>
+                        <h5>Kitchen Starter Pack</h5>
+                        <p>Affordable starter pack with essential items.</p>
+                        <div class="price-row">
+                            <span class="price">PKR 3,500</span>
+                            <span class="rating"><i class="fas fa-star"></i> 4.4</span>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-main w-100" onclick="event.stopPropagation(); addToCart(54)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCT MODAL -->
+<div class="modal fade" id="productModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalName">Product Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-5">
+                        <img id="modalImage" src="" alt="" class="modal-img">
+                    </div>
+                    <div class="col-md-7">
+                        <p id="modalCategory" style="color: var(--muted); font-size: 0.85rem; margin-bottom: 6px;"></p>
+                        <span id="modalBadge"></span>
+                        <p id="modalDescription" style="margin: 12px 0; color: var(--text);"></p>
+                        <p class="modal-price" id="modalPrice"></p>
+                        
+                        <h6 style="margin-top: 20px; margin-bottom: 12px; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 8px;">Product Specifications</h6>
+                        <table style="width:100%; font-size: 0.95rem;" class="table table-sm table-borderless">
+                            <tr><td class="modal-label" style="width: 35%; color: var(--muted); font-weight: 500;">Material</td><td id="modalMaterial" style="font-weight: 600;"></td></tr>
+                            <tr><td class="modal-label" style="color: var(--muted); font-weight: 500;">Weight</td><td id="modalWeight" style="font-weight: 600;"></td></tr>
+                            <tr><td class="modal-label" style="color: var(--muted); font-weight: 500;">Warranty</td><td id="modalWarranty" style="font-weight: 600;"></td></tr>
+                            <tr><td class="modal-label" style="color: var(--muted); font-weight: 500;">Best For</td><td id="modalBestFor" style="font-weight: 600;"></td></tr>
+                            <tr><td class="modal-label" style="color: var(--muted); font-weight: 500;">Rating</td><td id="modalRating" style="font-weight: 600;"></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-main" id="modalCartBtn">Add to Cart</button>
+                <button class="btn-outline" style="color: var(--primary); border-color: var(--primary);" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <h5><i class="fas fa-utensils"></i> Shine Utensils</h5>
+                <p>Premium kitchen solutions for every home. Serving customers since 2010.</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="discounts.html">Current Offers</a></li>
+                    <li><a href="comparison.html">Compare Products</a></li>
+                    <li><a href="feedback.html">Give Feedback</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Company</h5>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <h5>Follow Us</h5>
+                <p>Stay connected with us on social media.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2010-2026 Shine Utensils. All rights reserved.</p>
+            <p>Designed & Developed for eProject | Sem-1</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="products-render.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
